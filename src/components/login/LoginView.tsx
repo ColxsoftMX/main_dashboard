@@ -1,9 +1,8 @@
 import React from 'react';
-import { Col, Layout, Row, Select, Input, Form, Button } from 'antd';
+import { Col, Row, Select, Input, Form, Button } from 'antd';
 import imgLib from '../../assets/login/loginLib.jpeg';
 import { useLanguage } from '../../assets/login/translations/i18n.js';
 
-const { Content } = Layout;
 const { Option } = Select;
 
 const LoginView: React.FC = () => {
@@ -21,35 +20,34 @@ const LoginView: React.FC = () => {
     };
 
     return (
-        <Layout style={{ background: '#E3E3E3' }}>
-            <Content style={{ margin: '80px 40px 40px' }}>
+        <>
+            <div
+                style={{
+                    minHeight: 360,
+                    background: '#fff',
+                    borderRadius: 8,
+                }}
+            >
+                <Row>
+                    <Col sm={24} md={15} lg={15} style={{ padding: 20 }}>
+                        <Select
+                            defaultValue={language}
+                            style={{ width: 90 }}
+                            onChange={handleLanguageChange}
+                        >
+                            <Option value="es">Español</Option>
+                            <Option value="en">English</Option>
+                        </Select>
 
-                <div
-                    style={{
-                        minHeight: 360,
-                        background: '#fff',
-                        borderRadius: 8,
-                    }}
-                >
-                    <Row>
-                        <Col sm={24} md={13} lg={13} style={{ padding: 20 }}>
-                            <Select
-                                defaultValue={language}
-                                style={{ width: 90 }}
-                                onChange={handleLanguageChange}
-                            >
-                                <Option value="es">Español</Option>
-                                <Option value="en">English</Option>
-                            </Select>
+                        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 20px 10px' }}>
+                            <h1 style={{ margin: 0 }}>{t('t1')}</h1>
+                        </div>
 
-                            <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 20px 10px' }}>
-                                <h1 style={{ margin: 0 }}>{t('t1')}</h1>
-                            </div>
+                        <div style={{ color: 'gray', fontWeight: 'bolder', display: 'flex', justifyContent: 'center' }}>
+                            <p>{t('t2')}</p>
+                        </div>
 
-                            <div style={{ color: 'gray', fontWeight: 'bolder', display: 'flex', justifyContent: 'center' }}>
-                                <p>{t('t2')}</p>
-                            </div>
-
+                        <div style={{margin: ' 0 80px'}}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
                                     name="email"
@@ -72,7 +70,7 @@ const LoginView: React.FC = () => {
                                         <Form.Item name="remember" valuePropName="checked">
                                             <div style={{ display: 'flex' }}>
                                                 <label style={{ color: 'gray' }}>{t('t7')}</label>
-                                                <Input type="checkbox" style={{width: '30px', scale: '0.7'}} />
+                                                <Input type="checkbox" style={{ width: '30px', scale: '0.7' }} />
                                             </div>
                                         </Form.Item>
                                     </Col>
@@ -87,25 +85,19 @@ const LoginView: React.FC = () => {
                                         {t('t9')}
                                     </Button>
                                 </Form.Item>
-
-
-
                             </Form>
-                        </Col>
+                        </div>
+                    </Col>
 
-                        <Col sm={0} md={11} lg={11} style={{ display: 'flex', justifyContent: 'center' }}>
-                            <img src={imgLib}
-                                style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '0 8px 8px 0' }}
-                                alt="Pople in a library talking together"
-                            />
-                        </Col>
-                    </Row>
-                </div>
-                <div style={{ textAlign: 'center', margin: '20px' }}>
-                    ColxsoftMX ©{new Date().getFullYear()}
-                </div>
-            </Content>
-        </Layout>
+                    <Col sm={0} md={9} lg={9} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <img src={imgLib}
+                            style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '0 8px 8px 0' }}
+                            alt="Pople in a library talking together"
+                        />
+                    </Col>
+                </Row>
+            </div >
+        </>
     );
 };
 
