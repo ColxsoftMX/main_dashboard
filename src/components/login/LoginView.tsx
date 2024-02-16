@@ -1,7 +1,8 @@
 import React from 'react';
-import { Col, Row, Select, Input, Form, Button } from 'antd';
+import { Col, Row, Select, Input, Form, Button, Modal } from 'antd';
 import imgLib from '../../assets/login/loginLib.jpeg';
 import { useLanguage } from '../../assets/login/translations/i18n.js';
+import { LoginApi } from '../../utils/APIs.js';
 
 const { Option } = Select;
 
@@ -14,10 +15,59 @@ const LoginView: React.FC = () => {
     };
 
     const handleSaveData = () => {
-        // Aquí puedes manejar la lógica para guardar los datos, por ejemplo, enviarlos a un servidor
-        const formData = form.getFieldsValue();
-        console.log('Datos guardados:', formData);
+        form
+            .validateFields()
+            .then((formData) => {
+            
+                const postMom = {
+                    email_user: formData.email_user,
+                    password: formData.password,
+                };
+
+                console.log(postMom);
+
+                // solicitud tipo post con fetch 
+
+                fetch(`${LoginApi}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(postMom),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+
+                        console.log('Success:', data);
+                        if (data.status === 200) {
+                            Modal.success({
+                                title: `${t('t1')}`,
+                                content: `${t('t2')}`,
+                            });
+                        } else {
+                            Modal.error({
+                                title: `${t('err')}`,
+                                content: `${t('t9')}`,
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+            })
+            
+            .catch((errorInfo) => {
+                console.error('Error de validación:', errorInfo);
+
+                Modal.error({
+                    title: `${t('err')}`,
+                    content: `${errorInfo.errorFields[0].errors[0]}`,
+                });
+            });
     };
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return (
         <>
@@ -47,12 +97,14 @@ const LoginView: React.FC = () => {
                             <p>{t('t2')}</p>
                         </div>
 
-                        <div style={{margin: ' 0 80px'}}>
+                        <div style={{ margin: ' 0 80px' }}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
-                                    name="email"
+                                    name="email_user"
                                     label={t('t3')}
-                                    rules={[{ required: true, message: t('t4W') }]}
+                                    rules={[{ required: true, message: t('t4W') },
+                                    { pattern: emailRegex, message: t('t4W2') }
+                                    ]}
                                 >
                                     <Input placeholder={t('t4')} />
                                 </Form.Item>
@@ -60,7 +112,7 @@ const LoginView: React.FC = () => {
                                 <Form.Item
                                     name="password"
                                     label={t('t5')}
-                                    rules={[{ required: true, message: t('t4W') }]}
+                                    rules={[{ required: true, message: t('t5w') }]}
                                 >
                                     <Input.Password placeholder={t('t6')} />
                                 </Form.Item>
