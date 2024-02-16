@@ -1,12 +1,15 @@
 import React from 'react';
 import { Col, Row, Select, Input, Form, Button, Modal } from 'antd';
-import imgLib from '../../assets/login/loginLib.jpeg';
-import { useLanguage } from '../../assets/login/translations/i18n.js';
+import imgLib from './assets/loginLib.jpeg';
+import { useLanguage } from './translations/i18n.js';
 import { LoginApi } from '../../utils/APIs.js';
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
 const LoginView: React.FC = () => {
+    const navigate = useNavigate();
+
     const { language, setLanguage, t } = useLanguage();
     const [form] = Form.useForm();
 
@@ -25,6 +28,7 @@ const LoginView: React.FC = () => {
                 };
 
                 console.log(postMom);
+                // navigate('/dashboard');
 
                 // solicitud tipo post con fetch 
 
@@ -36,14 +40,16 @@ const LoginView: React.FC = () => {
                     body: JSON.stringify(postMom),
                 })
                     .then((response) => response.json())
-                    .then((data) => {
+                    .then((dat) => {
 
-                        console.log('Success:', data);
-                        if (data.status === 200) {
-                            Modal.success({
-                                title: `${t('t1')}`,
-                                content: `${t('t2')}`,
-                            });
+                        console.log('Success:', dat);
+                        if (dat.status === 200) {
+                            
+                            const token = dat.data.token;
+
+                            localStorage.setItem('token', token);
+
+                            navigate('/dashboard');
                         } else {
                             Modal.error({
                                 title: `${t('err')}`,
@@ -73,13 +79,13 @@ const LoginView: React.FC = () => {
         <>
             <div
                 style={{
-                    minHeight: 360,
+                    height: '100%',
                     background: '#fff',
                     borderRadius: 8,
                 }}
             >
                 <Row>
-                    <Col sm={24} md={15} lg={15} style={{ padding: 20 }}>
+                    <Col sm={24} md={14} lg={14} style={{ padding: 20 }}>
                         <Select
                             defaultValue={language}
                             style={{ width: 90 }}
@@ -141,10 +147,10 @@ const LoginView: React.FC = () => {
                         </div>
                     </Col>
 
-                    <Col sm={0} md={9} lg={9} style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Col sm={0} md={10} lg={10} style={{ display: 'flex', justifyContent: 'center' }}>
                         <img src={imgLib}
-                            style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '0 8px 8px 0' }}
-                            alt="Pople in a library talking together"
+                            style={{ width: '100%', height: '100%', borderRadius: '0 8px 8px 0' }}
+                            alt={t('img')}
                         />
                     </Col>
                 </Row>
