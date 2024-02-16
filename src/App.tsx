@@ -1,22 +1,28 @@
-import { Layout } from 'antd'
-import './App.css'
-import LoginView from './components/login/LoginView'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import { Layout } from 'antd';
+import LoginView from './components/login/LoginView';
 import Footer from './components/global/Footer';
+import Dashboard from './components/dashboard/Dashboard';
 
 const { Content } = Layout;
 
 function App() {
-
   return (
     <>
-      <Layout style={{ background: '#E3E3E3' }}>
-        <Content style={{ margin: '60px 40px 40px' }}>
-          <LoginView />
-        </Content>
-        <Footer />
-      </Layout>
+      <Router>
+        <Layout style={{ background: '#E3E3E3' }}>
+          <Content style={{ margin: '60px 40px 30px' }}>
+            <Routes>
+              <Route path="/" element={<LoginView />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </Content>
+          <Footer />
+        </Layout>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
