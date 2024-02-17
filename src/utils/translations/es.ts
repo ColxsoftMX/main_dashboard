@@ -18,7 +18,10 @@ export const esTranslationsLogin = {
 export const esTranslationsHeader = {
     H1: 'Colxsoft',
     H2: 'Inicio',
-    H3: 'Servicios',
-    H4: 'Usuarios',
-    H5: 'Salir'
+    H3: 'Usuarios',
+    H4: 'Salir',
+};
+
+export const esTranslationsDashboard = {
+    D1: 'Inicio',
 };
