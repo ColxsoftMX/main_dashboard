@@ -27,12 +27,12 @@ const HeaderView: React.FC = () => {
         <Header style={{ padding: 0, background: 'white', borderRadius: 8 }}>
             <div style={{ display: 'flex', background: 'white', borderRadius: 8 }}>
                 <Menu theme="light" mode="horizontal" style={{ width: '100%', height: '50px', borderRadius: 8 }} >
-                    <div style={{ width: '70%', borderRadius: 8 }}>
+                    <div style={{ width: '85%', borderRadius: 8 }}>
                         <h1 style={{ color: 'black', margin: '0 0 0 20px', padding: 0 }}>{t('H1')}</h1>
                     </div>
 
-                    <div style={{ width: '30%' }}>
-                        <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} style={{ width: '100%', height: '50px', borderRadius: 8 }} >
+                    <div style={{ width: '25%' }}>
+                        <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} style={{ width: '20%', height: '50px', borderRadius: '0 8px 0 0', position: 'absolute', justifyContent: 'end' }} >
                             <Menu.Item key="1">{t('H2')}</Menu.Item>
                             <Menu.Item key="2">{t('H3')}</Menu.Item>
                             <Menu.Item key="3" onClick={() => navigate('/')}>
