@@ -53,7 +53,7 @@ const LoginView: React.FC = () => {
                         } else {
                             Modal.error({
                                 title: `${t('err')}`,
-                                content: `${t('t9')}`,
+                                content: `${dat.message}`,
                             });
                         }
                     })
@@ -62,7 +62,6 @@ const LoginView: React.FC = () => {
                     });
 
             })
-            
             .catch((errorInfo) => {
                 console.error('Error de validación:', errorInfo);
 
