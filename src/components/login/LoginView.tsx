@@ -81,7 +81,7 @@ const LoginView: React.FC = () => {
                 }}
             >
                 <Row>
-                    <Col sm={24} md={14} lg={14} style={{ padding: 20 }}>
+                    <Col span={14} style={{ padding: 20 }}>
                         <Select
                             defaultValue={language}
                             style={{ width: 90 }}
@@ -143,7 +143,7 @@ const LoginView: React.FC = () => {
                         </div>
                     </Col>
 
-                    <Col sm={0} md={10} lg={10} style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Col span={10} style={{ display: 'flex', justifyContent: 'center' }}>
                         <img src={imgLib}
                             style={{ width: '100%', height: '100%', borderRadius: '0 8px 8px 0' }}
                             alt={t('img')}
