@@ -1,5 +1,5 @@
 import { Row } from "antd";
-import HeaderView from "../global/header/Header";
+import HeaderView from "../global/Header.js";
 import { useLanguageDashboard } from "../../utils/translations/i18n.js";
 import DashboardCards from "./Cards.js";
 import dashboardImage from './prueba.jpg';
@@ -8,6 +8,36 @@ const Dashboard: React.FC = () => {
     const { t } = useLanguageDashboard();
 
     const data = [
+        {
+            nombre: 'Dashboard 1',
+            imagen: dashboardImage,
+            path: '/app/invitaciones/',
+        },
+        {
+            nombre: 'Dashboard 2',
+            imagen: dashboardImage,
+            path: '/app/dashboard/',
+        },
+        {
+            nombre: 'Dashboard 1',
+            imagen: dashboardImage,
+            path: '/app/invitaciones/',
+        },
+        {
+            nombre: 'Dashboard 2',
+            imagen: dashboardImage,
+            path: '/app/dashboard/',
+        },
+        {
+            nombre: 'Dashboard 1',
+            imagen: dashboardImage,
+            path: '/app/invitaciones/',
+        },
+        {
+            nombre: 'Dashboard 2',
+            imagen: dashboardImage,
+            path: '/app/dashboard/',
+        },
         {
             nombre: 'Dashboard 1',
             imagen: dashboardImage,
@@ -29,13 +59,13 @@ const Dashboard: React.FC = () => {
             }}
         >
             <HeaderView />
-            <Row style={{ margin: '0 0 0 20px' }}>
+            <Row style={{ margin: '0 0 0 30px' }}>
                 <h1>{t('D1')}</h1>
             </Row>
 
             {data.length > 0 ? (
                 <DashboardCards data={data} />
-                ) : null}
+            ) : null}
         </div>
     );
 
