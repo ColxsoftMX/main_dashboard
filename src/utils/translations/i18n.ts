@@ -69,4 +69,33 @@ const useLanguageHeader = () => {
   return { language, setLanguage, t };
 };
 
-export { useLanguageLogin, useLanguageHeader };
+//////////////////////////////////////////////////////////////////////////////
+import { esTranslationsDashboard } from './es';
+import { enTranslationsDashboard } from './en';
+
+const languagesDashboard: Record<Languages, Record<string, string>> = {
+  es: esTranslationsDashboard,
+  en: enTranslationsDashboard,
+};
+
+const useLanguageDashboard = () => {
+  const [language, setLanguageState] = useState<Languages>(currentLanguage);
+
+  const setLanguage = (lang: Languages) => {
+    localStorage.removeItem('language');
+
+    if (languagesDashboard[lang]) {
+      currentLanguage = lang;
+      setLanguageState(lang);
+      localStorage.setItem('language', lang);
+    }
+  };
+
+  const t = (key: string) => {
+    return languagesDashboard[currentLanguage][key] || key;
+  };
+
+  return { language, setLanguage, t };
+};
+
+export { useLanguageLogin, useLanguageHeader, useLanguageDashboard };
