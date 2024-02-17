@@ -1,5 +1,5 @@
 import { Row } from "antd";
-import HeaderView from "../global/header/Header";
+import HeaderView from "../global/Header";
 
 const InvitacionesView: React.FC = () => {
 
