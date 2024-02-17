@@ -23,7 +23,7 @@ const LoginView: React.FC = () => {
         form
             .validateFields()
             .then((formData) => {
-            
+
                 const postMom = {
                     email_user: formData.email_user,
                     password: formData.password,
@@ -41,7 +41,7 @@ const LoginView: React.FC = () => {
 
                         console.log('Success:', dat);
                         if (dat.status === 200) {
-                            
+
                             const token = dat.data.token;
 
                             localStorage.setItem('token', token);
@@ -81,7 +81,7 @@ const LoginView: React.FC = () => {
                 }}
             >
                 <Row>
-                    <Col span={14} style={{ padding: 20 }}>
+                    <Col xs={24} md={14} style={{ padding: 20 }}>
                         <Select
                             defaultValue={language}
                             style={{ width: 90 }}
@@ -99,7 +99,7 @@ const LoginView: React.FC = () => {
                             <p>{t('L2')}</p>
                         </div>
 
-                        <div style={{ margin: ' 0 80px' }}>
+                        <div style={{ ...(window.innerWidth >= 800 ? { margin: '80px' } : {margin: '0'}) }}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
                                     name="email_user"
@@ -143,7 +143,7 @@ const LoginView: React.FC = () => {
                         </div>
                     </Col>
 
-                    <Col span={10} style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Col xs={0} md={10} style={{ display: 'flex', justifyContent: 'center' }}>
                         <img src={imgLib}
                             style={{ width: '100%', height: '100%', borderRadius: '0 8px 8px 0' }}
                             alt={t('img')}
