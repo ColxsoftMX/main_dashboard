@@ -1,16 +1,18 @@
 import React from 'react';
 import { Col, Row, Select, Input, Form, Button, Modal } from 'antd';
 import imgLib from './assets/loginLib.jpeg';
-import { useLanguage } from './translations/i18n.js';
+import { useLanguageLogin } from '../../utils/translations/i18n.js';
 import { LoginApi } from '../../utils/APIs.js';
 import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
 const LoginView: React.FC = () => {
+    localStorage.removeItem('token');
+
     const navigate = useNavigate();
 
-    const { language, setLanguage, t } = useLanguage();
+    const { language, setLanguage, t } = useLanguageLogin();
     const [form] = Form.useForm();
 
     const handleLanguageChange = (value: string) => {
@@ -26,11 +28,6 @@ const LoginView: React.FC = () => {
                     email_user: formData.email_user,
                     password: formData.password,
                 };
-
-                console.log(postMom);
-                // navigate('/dashboard');
-
-                // solicitud tipo post con fetch 
 
                 fetch(`${LoginApi}`, {
                     method: 'POST',
@@ -95,51 +92,51 @@ const LoginView: React.FC = () => {
                         </Select>
 
                         <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 20px 10px' }}>
-                            <h1 style={{ margin: 0 }}>{t('t1')}</h1>
+                            <h1 style={{ margin: 0 }}>{t('L1')}</h1>
                         </div>
 
                         <div style={{ color: 'gray', fontWeight: 'bolder', display: 'flex', justifyContent: 'center' }}>
-                            <p>{t('t2')}</p>
+                            <p>{t('L2')}</p>
                         </div>
 
                         <div style={{ margin: ' 0 80px' }}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
                                     name="email_user"
-                                    label={t('t3')}
-                                    rules={[{ required: true, message: t('t4W') },
-                                    { pattern: emailRegex, message: t('t4W2') }
+                                    label={t('L3')}
+                                    rules={[{ required: true, message: t('L4W') },
+                                    { pattern: emailRegex, message: t('L4W2') }
                                     ]}
                                 >
-                                    <Input placeholder={t('t4')} />
+                                    <Input placeholder={t('L4')} />
                                 </Form.Item>
 
                                 <Form.Item
                                     name="password"
-                                    label={t('t5')}
-                                    rules={[{ required: true, message: t('t5w') }]}
+                                    label={t('L5')}
+                                    rules={[{ required: true, message: t('L5w') }]}
                                 >
-                                    <Input.Password placeholder={t('t6')} />
+                                    <Input.Password placeholder={t('L6')} />
                                 </Form.Item>
 
                                 <Row>
                                     <Col span={12}>
                                         <Form.Item name="remember" valuePropName="checked">
                                             <div style={{ display: 'flex' }}>
-                                                <label style={{ color: 'gray' }}>{t('t7')}</label>
+                                                <label style={{ color: 'gray' }}>{t('L7')}</label>
                                                 <Input type="checkbox" style={{ width: '30px', scale: '0.7' }} />
                                             </div>
                                         </Form.Item>
                                     </Col>
 
                                     <Col span={12} style={{ textAlign: 'right', paddingTop: '5px' }}>
-                                        <a href="/">{t('t8')}</a>
+                                        <a href="/">{t('L8')}</a>
                                     </Col>
                                 </Row>
 
                                 <Form.Item>
                                     <Button type="primary" style={{ background: 'black', color: 'white', width: '100%' }} onClick={handleSaveData}>
-                                        {t('t9')}
+                                        {t('L9')}
                                     </Button>
                                 </Form.Item>
                             </Form>
