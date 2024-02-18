@@ -10,7 +10,7 @@ interface DashboardCardProps {
 }
 
 const DashboardCard: React.FC<DashboardCardProps> = ({ nombre, imagen, path }) => (
-  <Col xs={24} sm={12} md={8} lg={5} style={{margin: '0 20px 0 10px', padding: '20px'}}>
+  <Col xs={18} sm={8} md={6} lg={5} style={{margin: '0 10px 0 10px', padding: '20px'}}>
     <Card
       hoverable
       cover={<img alt={nombre} src={imagen} style={{ height: '150px', objectFit: 'cover' }} />}
