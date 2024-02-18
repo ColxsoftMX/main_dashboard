@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 
 type Languages = 'es' | 'en';
 
-let currentLanguage: Languages = 'es';
+// let currentLanguage: Languages = 'es';
+
+let currentLanguage: Languages = (localStorage.getItem('language') as Languages) || 'es';
 
 const useLanguage = (translations: Record<Languages, Record<string, string>>) => {
   const [language, setLanguageState] = useState<Languages>(currentLanguage);
