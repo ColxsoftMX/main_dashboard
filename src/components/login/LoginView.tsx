@@ -99,7 +99,7 @@ const LoginView: React.FC = () => {
                             <p>{t('L2')}</p>
                         </div>
 
-                        <div style={{ ...(window.innerWidth >= 800 ? { margin: '80px' } : {margin: '0'}) }}>
+                        <div style={{ ...(window.innerWidth >= 1000 ? { margin: '80px' } : {margin: '0'}) }}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
                                     name="email_user"
