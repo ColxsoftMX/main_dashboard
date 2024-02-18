@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Button } from 'antd';
 
 const { Meta } = Card;
 
@@ -7,16 +7,24 @@ interface DashboardCardProps {
   nombre: string;
   imagen: string;
   path: string;
+  descripcion: string;	
 }
 
-const DashboardCard: React.FC<DashboardCardProps> = ({ nombre, imagen, path }) => (
-  <Col xs={18} sm={8} md={6} lg={5} style={{margin: '0 10px 0 10px', padding: '20px'}}>
-    <Card
-      hoverable
-      cover={<img alt={nombre} src={imagen} style={{ height: '150px', objectFit: 'cover' }} />}
-    >
-      <Meta title={nombre} description={<a href={path}>Ir al dashboard</a>} />
-    </Card>
+const DashboardCard: React.FC<DashboardCardProps> = ({ nombre, imagen, path, descripcion }) => (
+  <Col xs={18} sm={8} md={6} lg={5} style={{ margin: '0 10px 0 10px', padding: '20px' }}>
+    <a href={path}>
+      <div style={{ boxShadow: '0px 0px 10px #DFDFDF', borderRadius: 8, border: '1px solid #DFDFDF' }} >
+        <Card
+          hoverable
+          cover={<img alt={nombre} src={imagen} style={{ height: '150px', objectFit: 'cover' }} />}
+        >
+          <Meta title={nombre} description={descripcion} />
+          <Button type="primary" style={{marginTop: '20px', width: '100%'}}>
+            {`Ir a ${nombre.toLowerCase()}`}
+          </Button>
+        </Card>
+      </div>
+    </a>
   </Col>
 );
 
