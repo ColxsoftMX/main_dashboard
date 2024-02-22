@@ -34,3 +34,4 @@ jobs:
         username: ${{ secrets.FTP_QA_USERNAME }}
         password: ${{ secrets.FTP_QA_PASSWORD }}
         server-dir: ${{ secrets.FTP_QA_SERVER_DIR }}
+        local-dir: ./dist/
