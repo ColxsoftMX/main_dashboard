@@ -2,10 +2,10 @@ import { Row } from "antd";
 import HeaderView from "../global/Header.js";
 import { useLanguageDashboard, useLanguageHeader } from "../../utils/translations/i18n.js";
 import DashboardCards from "./Cards.js";
-import dashboardImage from './prueba.jpg';
-import mesa from './mesas.jpg';
-import inventario from './inventario.jpg';
-import invitaciones from './invitaciones.jpg';
+import dashboardImage from './imgs/prueba.jpg';
+import mesa from './imgs/mesas.jpg';
+import inventario from './imgs/inventario.jpg';
+import invitaciones from './imgs/invitaciones.jpg';
 
 const Dashboard: React.FC = () => {
     const { t: tHeader } = useLanguageHeader();
