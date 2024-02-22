@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { Layout } from 'antd';
 import LoginView from './components/login/LoginView';
@@ -14,11 +14,13 @@ function App() {
       <Router>
         <Layout style={{ background: '#E3E3E3' }}>
           <Content style={{ margin: '60px 40px 30px' }}>
-            <Routes>
-              <Route path="/" element={<LoginView />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/app/invitaciones" element={<InvitacionesView />} />
-            </Routes>
+            <BrowserRouter basename='/app'>
+              <Routes>
+                <Route path="/" element={<LoginView />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/app/invitaciones" element={<InvitacionesView />} />
+              </Routes>
+            </BrowserRouter>
           </Content>
           <Footer />
         </Layout>
