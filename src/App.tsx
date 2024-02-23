@@ -19,7 +19,7 @@ function App() {
               <Route path="*" element={<h1>Not Found</h1>} />
               <Route path="/" element={<LoginView />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<InvitacionesView />} />
+              <Route path="/invitations" element={<InvitacionesView />} />
               <Route path="/users" element={<UsuariosView />} />
             </Routes>
           </Content>
