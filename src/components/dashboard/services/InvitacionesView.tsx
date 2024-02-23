@@ -1,7 +1,10 @@
 import { Row } from "antd";
 import HeaderView from "../../global/Header";
+import { useLanguageInvitations } from "../../../utils/translations/i18n";
 
 const InvitacionesView: React.FC = () => {
+
+    const { t } = useLanguageInvitations();
 
     return (
         <div
@@ -13,7 +16,7 @@ const InvitacionesView: React.FC = () => {
         >
             <HeaderView />
             <Row style={{ margin: '0 0 0 20px' }}>
-                <h1>Invitaciones</h1>
+                <h1 style={{ margin: '10px 20px' }}>{t('I1')}</h1>
             </Row>
         </div>
     );
