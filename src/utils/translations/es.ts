@@ -26,6 +26,10 @@ export const esTranslationsDashboard = {
     D1: 'Inicio',
 };
 
+export const esTranslationsInvitations = {
+    I1: 'Invitaciones',
+};
+
 export const esTranslationsUsers = {
     U1: 'Usuarios',
 };

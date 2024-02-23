@@ -26,6 +26,10 @@ export const enTranslationsDashboard = {
   D1: 'Home',
 };
 
+export const enTranslationsInvitations = {
+  I1: 'Invitations',
+};
+
 export const enTranslatiosnUsers = {
   U1: 'Users',
 };
