@@ -38,13 +38,17 @@ export const enTranslatiosnUsers = {
 
 export const enTranslationsCreateUser = {
   CU1: 'Name',
+  CU1P: 'Enter a name',
   CU1W: 'Please enter a name',
   CU2: 'Email',
+  CU2P: 'Enter a email',
   CU2W: 'Please enter a email',
   CU2W2: 'Please enter a valid email',
-  CU3: 'Date',
+  CU3: 'Token expiration',
   CU3W: 'Please select a date',
+  CU3P: 'Select a date',
   CU4: 'Role',
   CU4W: 'Please select a role',
+  CU4P: 'Select a role',
   CU5: 'Save',
 };

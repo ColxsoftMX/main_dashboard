@@ -29,26 +29,25 @@ const CreateUser: React.FC = () => {
     return (
         <Form onFinish={onFinish} layout='vertical' style={{ width: '100%' }}>
             <Form.Item label={t('CU1')} name="name" rules={[{ required: true, message: t('CU1W') }]}>
-                <Input />
+                <Input placeholder={t('CU1P')} />
             </Form.Item>
 
             <Form.Item label={t('CU2')} name="email" rules={[{ required: true, message: t('CU2W') }, 
             { pattern: emailRegex, message: t('CU2W2') }
         ]}>
-                <Input />
+                <Input placeholder={t('CU2P')} />
             </Form.Item>
 
             <Row>
                 <Col xs={24} md={6}>
                     <Form.Item label={t('CU3')} name="date" rules={[{ required: true, message: t('CU3W') }]}>
-                        <DatePicker style={{ width: '90%' }} />
+                        <DatePicker style={{ width: '90%' }} placeholder={t('CU3P')} />
                     </Form.Item>
                 </Col>
 
                 <Col xs={24} md={6}>
                     <Form.Item label={t('CU4')} name="role" rules={[{ required: true, message: t('CU4W') }]}>
-                        <Select defaultValue={""}>
-                            <Option value="">Select a role</Option>
+                        <Select placeholder={t('CU4P')}>
                             <Option value="admin">Admin</Option>
                             <Option value="user">User</Option>
                         </Select>

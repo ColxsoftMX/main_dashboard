@@ -38,13 +38,17 @@ export const esTranslationsUsers = {
 
 export const esTranslationsCreateUser = {
     CU1: 'Nombre',
+    CU1P: 'Ingresa un nombre',
     CU1W: 'Por favor ingresa un nombre',
     CU2: 'Correo',
+    CU2P: 'Ingresa un correo',
     CU2W: 'Por favor ingresa un correo',
     CU2W2: 'Por favor ingresa un correo válido',
-    CU3: 'Fecha',
+    CU3: 'Expiración de token',
+    CU3P: 'Selecciona una fecha',
     CU3W: 'Por favor selecciona una fecha',
     CU4: 'Rol',
+    CU4P: 'Selecciona un rol',
     CU4W: 'Por favor selecciona un rol',
     CU5: 'Guardar',
 };
