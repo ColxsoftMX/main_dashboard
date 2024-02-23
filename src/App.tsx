@@ -4,8 +4,8 @@ import { Layout } from 'antd';
 import LoginView from './components/login/LoginView';
 import Footer from './components/global/Footer';
 import Dashboard from './components/dashboard/Dashboard';
-import InvitacionesView from './components/dashboard/services/InvitacionesView';
-import UsuariosView from './components/dashboard/services/UsuariosView';
+import InvitationsView from './components/dashboard/services/invitations/InvitationsView';
+import UsersView from './components/dashboard/services/users/UsersView';
 
 const { Content } = Layout;
 
@@ -19,8 +19,8 @@ function App() {
               <Route path="*" element={<h1>Not Found</h1>} />
               <Route path="/" element={<LoginView />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/invitations" element={<InvitacionesView />} />
-              <Route path="/users" element={<UsuariosView />} />
+              <Route path="/invitations" element={<InvitationsView />} />
+              <Route path="/users" element={<UsersView />} />
             </Routes>
           </Content>
           <Footer />
