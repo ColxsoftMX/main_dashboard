@@ -32,4 +32,19 @@ export const enTranslationsInvitations = {
 
 export const enTranslatiosnUsers = {
   U1: 'Users',
+  UTab1: 'Create user',
+  UTab2: 'Manage users',  
+};
+
+export const enTranslationsCreateUser = {
+  CU1: 'Name',
+  CU1W: 'Please enter a name',
+  CU2: 'Email',
+  CU2W: 'Please enter a email',
+  CU2W2: 'Please enter a valid email',
+  CU3: 'Date',
+  CU3W: 'Please select a date',
+  CU4: 'Role',
+  CU4W: 'Please select a role',
+  CU5: 'Save',
 };
