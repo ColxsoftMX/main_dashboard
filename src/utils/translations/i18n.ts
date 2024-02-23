@@ -32,8 +32,8 @@ const useLanguage = (translations: Record<Languages, Record<string, string>>) =>
 
 export { useLanguage };
 
-import { esTranslationsLogin, esTranslationsHeader, esTranslationsDashboard } from './es';
-import { enTranslationsLogin, enTranslationsHeader, enTranslationsDashboard } from './en';
+import { esTranslationsLogin, esTranslationsHeader, esTranslationsDashboard, esTranslationsUsers } from './es';
+import { enTranslationsLogin, enTranslationsHeader, enTranslationsDashboard, enTranslatiosnUsers } from './en';
 
 const languagesLogin: Record<Languages, Record<string, string>> = {
   es: esTranslationsLogin,
@@ -50,6 +50,12 @@ const languagesDashboard: Record<Languages, Record<string, string>> = {
   en: enTranslationsDashboard,
 };
 
+const languagesUsers: Record<Languages, Record<string, string>> = {
+  es: esTranslationsUsers,
+  en: enTranslatiosnUsers,
+};
+
 export const useLanguageLogin = () => useLanguage(languagesLogin);
 export const useLanguageHeader = () => useLanguage(languagesHeader);
 export const useLanguageDashboard = () => useLanguage(languagesDashboard);
+export const useLanguageUsers = () => useLanguage(languagesUsers);
