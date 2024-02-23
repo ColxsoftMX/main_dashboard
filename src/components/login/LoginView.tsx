@@ -13,6 +13,9 @@ const LoginView: React.FC = () => {
     const navigate = useNavigate();
 
     const { language, setLanguage, t } = useLanguageLogin();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const [form] = Form.useForm();
 
     const handleLanguageChange = (value: string) => {
@@ -68,8 +71,6 @@ const LoginView: React.FC = () => {
                 });
             });
     };
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return (
         <>
