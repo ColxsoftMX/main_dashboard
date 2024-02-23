@@ -25,3 +25,7 @@ export const enTranslationsHeader = {
 export const enTranslationsDashboard = {
   D1: 'Home',
 };
+
+export const enTranslatiosnUsers = {
+  U1: 'Users',
+};
