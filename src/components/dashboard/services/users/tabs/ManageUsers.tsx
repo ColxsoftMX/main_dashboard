@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Tag, Modal, Input, DatePicker, Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import 'moment/locale/es';
+import { Avatar, Tag, Modal, Input, DatePicker, Button, Row, Col } from 'antd';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import dayjs, { Dayjs } from 'dayjs';
 
 interface User {
     id_user: string;
@@ -19,6 +18,7 @@ interface ManageUsersProps {
 }
 
 const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
+    // PANEL DE USUARIOS
     const colors = ['#ff5733', '#33ff57', '#5733ff', '#ff33a1', '#33a1ff', '#a1ff33', '#ff3333', '#3333ff', '#33ffaa', '#aa33ff'];
 
     const getNextColor = (index: number) => colors[index % colors.length];
@@ -29,91 +29,201 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
         return currentDate > expirationDate;
     };
 
-    const [editUserData, setEditUserData] = useState<User | null>(null);
-    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+    // EDITAR USUARIO
+    const [selectedUserData, setSelectedUserData] = useState<User | null>(null);
+    const [isEditarVisible, setIsModalVisible] = useState<boolean>(false);
+
+    const [nameEdit, setNameEdit] = useState<string>('');
+    const [emailEdit, setEmailEdit] = useState<string>('');
+    const [tokenExpireEdit, setTokenExpireEdit] = useState<string>('');
 
     const handleEdit = (user: User) => {
-        setEditUserData(user);
-        showModal();
+        setSelectedUserData(user);
+
+        setNameEdit(user.name_user);
+        setEmailEdit(user.email_user);
+        setTokenExpireEdit(user.token_expire);
+        console.log(user.token_expire)
+
+        showEditModal();
     };
 
-    const handleSave = () => {
-        // Lógica para guardar los cambios (puedes implementar según tus necesidades)
-        hideModal();
+    const handleEditName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNameEdit(e.target.value);
     };
 
-    const handleCancel = () => {
-        hideModal();
+    const handleEditEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmailEdit(e.target.value);
     };
 
-    const showModal = () => {
+    const handleEditTokenExpire = (date: Dayjs | null) => {
+        if (date) {
+            setTokenExpireEdit(date.format('YYYY-MM-DD'));
+        }
+    }
+
+    const handleCancelEdit = () => {
+        hideEditModal();
+    };
+
+    const showEditModal = () => {
         setIsModalVisible(true);
     };
 
-    const hideModal = () => {
+    const hideEditModal = () => {
         setIsModalVisible(false);
-        setEditUserData(null);
+        setSelectedUserData(null);
     };
 
+    const handleSaveEdit = () => {
+
+        const post = {
+            id_user: selectedUserData?.id_user,
+            token: selectedUserData?.token,
+
+            token_expire: tokenExpireEdit,
+            name_user: nameEdit,
+            email_user: emailEdit,
+
+            type_user: selectedUserData?.type_user,
+            active: selectedUserData?.active,
+        };
+
+        console.log(post);
+
+        hideEditModal();
+    };
+
+    const footerCustomEdit = (
+        <>
+            <Button type="default" onClick={handleCancelEdit}>
+                Cancelar
+            </Button>
+
+            <Button type="primary" onClick={handleSaveEdit}>
+                Guardar
+            </Button>
+        </>
+    );
+
+    // ELIMINAR USUARIO
+    const [isEliminarVisible, setIsEliminarVisible] = useState<boolean>(false);
+
+    const showDeleteModal = (user: User) => {
+        setSelectedUserData(user);
+
+        setIsEliminarVisible(true);
+    };
+
+    const hideDeleteModal = () => {
+        setIsEliminarVisible(false);
+    };
+
+    const handleDelete = () => {
+        console.log(selectedUserData?.id_user);
+        hideDeleteModal();
+    };
+
+    const footerCustomDelete = (
+        <>
+            <Button type="default" onClick={hideDeleteModal}>
+                Cancelar
+            </Button>
+
+            <Button type="primary" onClick={handleDelete}>
+                Guardar
+            </Button>
+        </>
+    );
+
     return (
-        <div>
-            <h1>Manage Users</h1>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {users.map((user, index) => (
-                    <div key={user.id_user} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+        <div style={{ width: '100%' }}>
+            <h1 className='m-0'>Manage Users</h1>
+            {users.map((user, index) => (
+                <Row key={user.id_user} className='my-15 ms-15'>
+                    <Col sm={12} md={3} lg={3}>
                         <Avatar
                             size={64}
                             style={{ backgroundColor: getNextColor(index), marginRight: '8px' }}
                         >
                             {user.name_user.split(' ')[0][0].toUpperCase()}
                         </Avatar>
+                    </Col>
+
+                    <Col sm={12} md={17} lg={17}>
                         <div>
                             <strong>{user.name_user}</strong>
                             {isUserDeactivated(user.token_expire) && <Tag color="red" style={{ marginLeft: '8px' }}>Desactivado</Tag>}
                             <div style={{ color: '#777', marginTop: '4px' }}>
                                 Token: {user.token}
                             </div>
-                            <Button
-                                type="primary"
-                                icon={<EditOutlined />}
-                                onClick={() => handleEdit(user)}
-                                style={{ marginTop: '8px' }}
-                            >
-                                Editar
-                            </Button>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    </Col>
+
+                    <Col sm={12} md={4} lg={4} style={{ textAlign: 'end' }}>
+                        <Button
+                            type="text"
+                            icon={<EditOutlined />}
+                            onClick={() => handleEdit(user)}
+                            style={{ marginTop: '20px' }}
+                            shape='circle'
+                        />
+
+                        <Button
+                            type="text"
+                            icon={<DeleteOutlined />}
+                            onClick={() => showDeleteModal(user)}
+                            style={{ marginTop: '20px' }}
+                            shape='circle'
+                        />
+                    </Col>
+                </Row>
+            ))}
             <Modal
                 title="Editar Usuario"
-                visible={isModalVisible}
-                onOk={handleSave}
-                onCancel={handleCancel}
+                visible={isEditarVisible}
+                footer={footerCustomEdit}
+                onCancel={hideEditModal}
             >
-                {editUserData && (
-                    <div>
-                        <strong>Nombre:</strong>
-                        <Input value={editUserData.name_user} />
+                <div>
+                    <Row>
+                        <strong>Nombre</strong>
+                        <Input value={nameEdit} onChange={handleEditName} />
+                    </Row>
 
-                        <strong>Email:</strong>
-                        <Input value={editUserData.email_user} />
+                    <Row style={{ marginTop: '15px', marginBottom: '15px' }}>
+                        <strong>Email</strong>
+                        <Input value={emailEdit} onChange={handleEditEmail} />
+                    </Row>
 
-                        <strong>Fecha de vencimiento:</strong>
-                        <DatePicker value={moment(editUserData.token_expire)} />
-                    </div>
-                )}
+                    <Row>
+                        <strong>Fecha de vencimiento</strong>
+                    </Row>
 
-                <Button type="default" onClick={handleCancel}>
-                    Cancelar
-                </Button>
-
-                <Button type="primary" onClick={handleSave}>
-                    Guardar
-                </Button>
-
+                    <Row>
+                        <DatePicker 
+                        style={{ width: '100%' }}
+                        value={dayjs(tokenExpireEdit)}
+                            onChange={handleEditTokenExpire}
+                        />
+                    </Row>
+                </div>
             </Modal>
-        </div>
+
+            <Modal
+                title="Eliminar usuario"
+                visible={isEliminarVisible}
+                footer={footerCustomDelete}
+                onCancel={hideEditModal}
+            >
+                <Row>
+                    <Col>
+                    <p>{`¿Está seguro que desea eliminar al usuario ${selectedUserData?.name_user}?`}</p>
+                    </Col>
+                </Row>
+            </Modal>
+
+        </div >
     );
 };
 
