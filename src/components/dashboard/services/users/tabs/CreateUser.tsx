@@ -48,8 +48,8 @@ const CreateUser: React.FC = () => {
                 <Col xs={24} md={6}>
                     <Form.Item label={t('CU4')} name="role" rules={[{ required: true, message: t('CU4W') }]}>
                         <Select placeholder={t('CU4P')}>
-                            <Option value="admin">Admin</Option>
-                            <Option value="user">User</Option>
+                            <Option value="1">{t('CUO1')}</Option>
+                            <Option value="1">{t('CUO2')}</Option>
                         </Select>
                     </Form.Item>
                 </Col>

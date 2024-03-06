@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, Tag, Modal, Input, DatePicker, Button, Row, Col } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import dayjs, { Dayjs } from 'dayjs';
+import { useLanguageManageUsers } from '../../../../../utils/translations/i18n';
 
 interface User {
     id_user: string;
@@ -18,6 +19,9 @@ interface ManageUsersProps {
 }
 
 const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
+    // TRADUCCTOR
+    const { t } = useLanguageManageUsers();
+
     // PANEL DE USUARIOS
     const colors = ['#ff5733', '#33ff57', '#5733ff', '#ff33a1', '#33a1ff', '#a1ff33', '#ff3333', '#3333ff', '#33ffaa', '#aa33ff'];
 
@@ -97,11 +101,11 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
     const footerCustomEdit = (
         <>
             <Button type="default" onClick={handleCancelEdit}>
-                Cancelar
+                {t('MUEU5')}
             </Button>
 
             <Button type="primary" onClick={handleSaveEdit}>
-                Guardar
+                {t('MUEU6')}
             </Button>
         </>
     );
@@ -127,18 +131,18 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
     const footerCustomDelete = (
         <>
             <Button type="default" onClick={hideDeleteModal}>
-                Cancelar
+                {t('MUEU5')}
             </Button>
 
             <Button type="primary" onClick={handleDelete}>
-                Guardar
+                {t('MUEU6')}
             </Button>
         </>
     );
 
     return (
         <div style={{ width: '100%' }}>
-            <h1 className='m-0'>Manage Users</h1>
+            <h1 className='m-0'>{t('MU1')}</h1>
             {users.map((user, index) => (
                 <Row key={user.id_user} className='my-15 ms-15'>
                     <Col sm={12} md={3} lg={3}>
@@ -153,7 +157,7 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
                     <Col sm={12} md={17} lg={17}>
                         <div>
                             <strong>{user.name_user}</strong>
-                            {isUserDeactivated(user.token_expire) && <Tag color="red" style={{ marginLeft: '8px' }}>Desactivado</Tag>}
+                            {isUserDeactivated(user.token_expire) && <Tag color="red" style={{ marginLeft: '8px' }}>{t('MU2')}</Tag>}
                             <div style={{ color: '#777', marginTop: '4px' }}>
                                 Token: {user.token}
                             </div>
@@ -180,30 +184,30 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
                 </Row>
             ))}
             <Modal
-                title="Editar Usuario"
+                title={t('MUEU1')}
                 visible={isEditarVisible}
                 footer={footerCustomEdit}
                 onCancel={hideEditModal}
             >
                 <div>
                     <Row>
-                        <strong>Nombre</strong>
+                        <strong>{t('MUEU2')}</strong>
                         <Input value={nameEdit} onChange={handleEditName} />
                     </Row>
 
                     <Row style={{ marginTop: '15px', marginBottom: '15px' }}>
-                        <strong>Email</strong>
+                        <strong>{t('MUEU3')}</strong>
                         <Input value={emailEdit} onChange={handleEditEmail} />
                     </Row>
 
                     <Row>
-                        <strong>Fecha de vencimiento</strong>
+                        <strong>{t('MUEU4')}</strong>
                     </Row>
 
                     <Row>
-                        <DatePicker 
-                        style={{ width: '100%' }}
-                        value={dayjs(tokenExpireEdit)}
+                        <DatePicker
+                            style={{ width: '100%' }}
+                            value={dayjs(tokenExpireEdit)}
                             onChange={handleEditTokenExpire}
                         />
                     </Row>
@@ -211,14 +215,14 @@ const ManageUsers: React.FC<ManageUsersProps> = ({ users }) => {
             </Modal>
 
             <Modal
-                title="Eliminar usuario"
+                title={t('MUEU1')}
                 visible={isEliminarVisible}
                 footer={footerCustomDelete}
                 onCancel={hideEditModal}
             >
                 <Row>
                     <Col>
-                    <p>{`¿Está seguro que desea eliminar al usuario ${selectedUserData?.name_user}?`}</p>
+                        <p>{`${t('MUEUW2')} ${selectedUserData?.name_user}?`}</p>
                     </Col>
                 </Row>
             </Modal>
