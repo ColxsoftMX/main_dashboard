@@ -6,6 +6,7 @@ import dashboardImage from './imgs/prueba.jpg';
 import mesa from './imgs/mesas.jpg';
 import inventario from './imgs/inventario.jpg';
 import invitaciones from './imgs/invitaciones.jpg';
+import usuarios from './imgs/usuarios.png';
 
 const Dashboard: React.FC = () => {
     const { t: tHeader } = useLanguageHeader();
@@ -25,10 +26,10 @@ const Dashboard: React.FC = () => {
             descripcion: 'Gestión de mesas',
         },
         {
-            nombre: 'Dashboard 2',
-            imagen: dashboardImage,
-            path: 'invitations/',
-            descripcion: 'Dashboard de prueba',
+            nombre: 'Usuarios',
+            imagen: usuarios,
+            path: 'users/',
+            descripcion: 'Control de usuarios',
         },
         {
             nombre: 'Inventario',
