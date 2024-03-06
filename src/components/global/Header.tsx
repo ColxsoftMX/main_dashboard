@@ -21,15 +21,15 @@ const HeaderView: React.FC<HeaderViewProps> = ({ activeTab }) => {
           </Menu.Item>
         </Menu>
 
-        <Menu theme="light" mode="horizontal" defaultSelectedKeys={[activeTab || '']} style={{ width: '25%', height: '50px', borderRadius: '0 8px 0 0', boxShadow: '0px 5px 3px -5px #DFDFDF' }}>
+        <Menu theme="light" mode="horizontal" defaultSelectedKeys={[activeTab || '']} style={{ width: '15%', height: '50px', borderRadius: '0 8px 0 0', boxShadow: '0px 5px 3px -5px #DFDFDF' }}>
           <Menu.Item key={t('H2')} onClick={() => navigate('/dashboard')}>
             {t('H2')}
           </Menu.Item>
 
-          <Menu.Item key={t('H3')} onClick={() => navigate('/users')}>
+          {/* <Menu.Item key={t('H3')} onClick={() => navigate('/users')}>
             {t('H3')}
-            
-          </Menu.Item>
+          </Menu.Item> */}
+
           <Menu.Item key={t('H4')} onClick={() => navigate('/')}>
             {t('H4')}
           </Menu.Item>
