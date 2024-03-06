@@ -34,12 +34,12 @@ export { useLanguage };
 
 import {
   esTranslationsLogin, esTranslationsHeader, esTranslationsDashboard, esTranslationsInvitations, esTranslationsUsers,
-  esTranslationsCreateUser,
+  esTranslationsCreateUser, esTranslateManageUsers,
 } from './es';
 
 import {
   enTranslationsLogin, enTranslationsHeader, enTranslationsDashboard, enTranslationsInvitations, enTranslatiosnUsers,
-  enTranslationsCreateUser,
+  enTranslationsCreateUser, enTranslationsManageUsers,
 } from './en';
 
 const languagesLogin: Record<Languages, Record<string, string>> = {
@@ -72,9 +72,15 @@ const languagesCreateUser: Record<Languages, Record<string, string>> = {
   en: enTranslationsCreateUser,
 };
 
+const languagesManageUsers: Record<Languages, Record<string, string>> = {
+  es: esTranslateManageUsers,
+  en: enTranslationsManageUsers,
+};
+
 export const useLanguageLogin = () => useLanguage(languagesLogin);
 export const useLanguageHeader = () => useLanguage(languagesHeader);
 export const useLanguageDashboard = () => useLanguage(languagesDashboard);
 export const useLanguageInvitations = () => useLanguage(languagesInvitations);
 export const useLanguageUsers = () => useLanguage(languagesUsers);
 export const useLanguageCreateUser = () => useLanguage(languagesCreateUser);
+export const useLanguageManageUsers = () => useLanguage(languagesManageUsers);

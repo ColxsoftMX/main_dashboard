@@ -51,4 +51,19 @@ export const enTranslationsCreateUser = {
   CU4W: 'Please select a role',
   CU4P: 'Select a role',
   CU5: 'Save',
+  CUO1: 'Administrator',
+  CUO2: 'User',
+};
+
+export const enTranslationsManageUsers = {
+  MU1: 'Manage users',
+  MU2: 'Desactivated',
+  MUEU1: 'Edit User',
+  MUEU2: 'Name',
+  MUEU3: 'Email',
+  MUEU4: 'Token expiration',
+  MUEU5: 'Cancel',
+  MUEU6: 'Save',
+  MUEUW1: 'Delete user',
+  MUEUW2: 'Are you sure you want to delete the user',
 };

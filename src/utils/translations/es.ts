@@ -51,4 +51,19 @@ export const esTranslationsCreateUser = {
     CU4P: 'Selecciona un rol',
     CU4W: 'Por favor selecciona un rol',
     CU5: 'Guardar',
+    CUO1: 'Administrador',
+    CUO2: 'Usuario',
+};
+
+export const esTranslateManageUsers = {
+    MU1: 'Administrar usuarios',
+    MU2: 'Desactivado',
+    MUEU1: 'Editar Usuario',
+    MUEU2: 'Nombre',
+    MUEU3: 'Correo electrónico',
+    MUEU4: 'Fecha de vencimiento',
+    MUEU5: 'Cancelar',
+    MUEU6: 'Guardar',
+    MUEUW1: 'Eliminar usuario',
+    MUEUW2: '¿Está seguro que desea eliminar al usuario',
 };
