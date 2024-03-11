@@ -1,0 +1,19 @@
+import { ValidateTokenApi } from "./APIs";
+
+export const validateToken = async (token: string) => {
+    try {
+        const response = await fetch(`${ValidateTokenApi}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Bearer': `${token}`
+            },
+            body: JSON.stringify({}),
+        });
+        const data = await response.json();
+        console.log('Success:', data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
