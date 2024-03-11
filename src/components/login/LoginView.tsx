@@ -13,6 +13,9 @@ const LoginView: React.FC = () => {
     const navigate = useNavigate();
 
     const { language, setLanguage, t } = useLanguageLogin();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const [form] = Form.useForm();
 
     const handleLanguageChange = (value: string) => {
@@ -42,7 +45,7 @@ const LoginView: React.FC = () => {
                         console.log('Success:', dat);
                         if (dat.status === 200) {
 
-                            const token = dat.data.token;
+                            const token = dat.data[0];
 
                             localStorage.setItem('token', token);
 
@@ -68,8 +71,6 @@ const LoginView: React.FC = () => {
                 });
             });
     };
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return (
         <>
@@ -99,7 +100,7 @@ const LoginView: React.FC = () => {
                             <p>{t('L2')}</p>
                         </div>
 
-                        <div style={{ ...(window.innerWidth >= 1000 ? { margin: '80px' } : {margin: '0'}) }}>
+                        <div style={{ ...(window.innerWidth >= 1000 ? { margin: '80px' } : { margin: '0' }) }}>
                             <Form form={form} style={{ marginTop: '20px' }} layout='vertical'>
                                 <Form.Item
                                     name="email_user"
@@ -116,7 +117,14 @@ const LoginView: React.FC = () => {
                                     label={t('L5')}
                                     rules={[{ required: true, message: t('L5w') }]}
                                 >
-                                    <Input.Password placeholder={t('L6')} />
+                                    <Input.Password placeholder={t('L6')}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') {
+                                                e.preventDefault();
+                                                handleSaveData();
+                                            }
+                                        }}
+                                    />
                                 </Form.Item>
 
                                 <Row>

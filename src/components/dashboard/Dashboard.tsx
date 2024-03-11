@@ -6,8 +6,15 @@ import dashboardImage from './imgs/prueba.jpg';
 import mesa from './imgs/mesas.jpg';
 import inventario from './imgs/inventario.jpg';
 import invitaciones from './imgs/invitaciones.jpg';
+import usuarios from './imgs/usuarios.png';
+// import { useEffect } from "react";
+// import { validateToken } from "../../utils/Functions.js";
 
 const Dashboard: React.FC = () => {
+    //TOKEN
+    // const token = localStorage.getItem('token');
+
+    // TRANSLATIONS
     const { t: tHeader } = useLanguageHeader();
     const { t: tDashboard } = useLanguageDashboard();
 
@@ -15,47 +22,54 @@ const Dashboard: React.FC = () => {
         {
             nombre: 'Dashboard 1',
             imagen: dashboardImage,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Dashboard de prueba',
         },
         {
             nombre: 'Gestión de mesas',
             imagen: mesa,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Gestión de mesas',
         },
         {
-            nombre: 'Dashboard 2',
-            imagen: dashboardImage,
-            path: '/apps/invitaciones/',
-            descripcion: 'Dashboard de prueba',
+            nombre: 'Usuarios',
+            imagen: usuarios,
+            path: 'users/',
+            descripcion: 'Control de usuarios',
         },
         {
             nombre: 'Inventario',
             imagen: inventario,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Inventario de productos',
         },
         {
             nombre: 'Dashboard 3',
             imagen: dashboardImage,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Dashboard de prueba',
         },
         {
             nombre: 'Invitaciones',
             imagen: invitaciones,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Gestión de invitaciones',
         },
         {
             nombre: 'Dashboard 4',
             imagen: dashboardImage,
-            path: '/apps/invitaciones/',
+            path: 'invitations/',
             descripcion: 'Dashboard de prueba',
         },
-        
+
     ];
+
+    // useEffect(() => {
+    //     if (token) {
+    //         console.log(validateToken(token));
+    //     }
+    //     // eslint-disable-next-line
+    // }, []);
 
     return (
         <div
