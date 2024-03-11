@@ -45,7 +45,7 @@ const LoginView: React.FC = () => {
                         console.log('Success:', dat);
                         if (dat.status === 200) {
 
-                            const token = dat.data.token;
+                            const token = dat.data[0];
 
                             localStorage.setItem('token', token);
 
