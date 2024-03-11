@@ -7,8 +7,14 @@ import mesa from './imgs/mesas.jpg';
 import inventario from './imgs/inventario.jpg';
 import invitaciones from './imgs/invitaciones.jpg';
 import usuarios from './imgs/usuarios.png';
+// import { useEffect } from "react";
+// import { validateToken } from "../../utils/Functions.js";
 
 const Dashboard: React.FC = () => {
+    //TOKEN
+    // const token = localStorage.getItem('token');
+
+    // TRANSLATIONS
     const { t: tHeader } = useLanguageHeader();
     const { t: tDashboard } = useLanguageDashboard();
 
@@ -55,8 +61,15 @@ const Dashboard: React.FC = () => {
             path: 'invitations/',
             descripcion: 'Dashboard de prueba',
         },
-        
+
     ];
+
+    // useEffect(() => {
+    //     if (token) {
+    //         console.log(validateToken(token));
+    //     }
+    //     // eslint-disable-next-line
+    // }, []);
 
     return (
         <div
