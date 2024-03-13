@@ -4,7 +4,7 @@ import { useLanguageDashboard, useLanguageHeader } from "../../utils/translation
 import DashboardCards from "./Cards.js";
 import dashboardImage from './imgs/prueba.jpg';
 import mesa from './imgs/mesas.jpg';
-import inventario from './imgs/inventario.jpg';
+// import inventario from './imgs/inventario.jpg';
 import invitaciones from './imgs/invitaciones.jpg';
 import usuarios from './imgs/usuarios.png';
 // import { useEffect } from "react";
