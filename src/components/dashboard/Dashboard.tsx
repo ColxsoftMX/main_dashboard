@@ -38,10 +38,10 @@ const Dashboard: React.FC = () => {
             descripcion: 'Control de usuarios',
         },
         {
-            nombre: 'Inventario',
-            imagen: inventario,
-            path: 'invitations/',
-            descripcion: 'Inventario de productos',
+            nombre: 'Usuarios',
+            imagen: usuarios,
+            path: 'usuarios/',
+            descripcion: 'Control de usuarios',
         },
         {
             nombre: 'Dashboard 3',
