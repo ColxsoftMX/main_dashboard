@@ -4,6 +4,7 @@ import imgLib from './assets/loginLib.jpeg';
 import { useLanguageLogin } from '../../utils/translations/i18n.js';
 import { LoginApi } from '../../utils/APIs.js';
 import { useNavigate } from 'react-router-dom';
+import { decodeJwt } from '../../utils/Functions.js';
 
 const { Option } = Select;
 
@@ -46,6 +47,8 @@ const LoginView: React.FC = () => {
                         if (dat.status === 200) {
 
                             const token = dat.data[0];
+
+                            decodeJwt(token);
 
                             localStorage.setItem('token', token);
 
