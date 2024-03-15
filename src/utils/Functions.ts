@@ -21,9 +21,9 @@ export const validateToken = async (token: string) => {
 export const decodeJwt = (token: string) => {
     const tokenPayload = JSON.parse(atob(token.split('.')[1]));
 
-    if (localStorage.getItem('datosUsr')) {
-        localStorage.removeItem('datosUsr');
+    if (localStorage.getItem('userData')) {
+        localStorage.removeItem('userData');
     }
 
-    localStorage.setItem('datosUsr', JSON.stringify(tokenPayload));
+    localStorage.setItem('userData', JSON.stringify(tokenPayload));
 }
