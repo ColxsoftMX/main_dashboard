@@ -17,3 +17,13 @@ export const validateToken = async (token: string) => {
         console.error('Error:', error);
     }
 };
+
+export const decodeJwt = (token: string) => {
+    const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+
+    if (localStorage.getItem('datosUsr')) {
+        localStorage.removeItem('datosUsr');
+    }
+
+    localStorage.setItem('datosUsr', JSON.stringify(tokenPayload));
+}
